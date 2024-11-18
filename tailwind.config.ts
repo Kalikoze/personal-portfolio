@@ -10,7 +10,7 @@ export default {
     extend: {
       colors: {
         primary: "#2DD4BF", // Vibrant teal
-        secondary: "#6366F1", // Electric indigo
+        secondary: "#4F46E5", // Darker indigo for better contrast
         accent: "#00FF94", // Bright neon green
         error: "#FF3366", // Warm red for errors/notifications
         dark: "#0F172A", // Deep blue-black
