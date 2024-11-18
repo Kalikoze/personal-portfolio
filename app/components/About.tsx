@@ -43,7 +43,7 @@ export default function About() {
           >
             <div className="bg-light/5 rounded-lg p-6 space-y-6">
               <p className="text-light/80">
-                Currently leading engineering initiatives at Mind & Metrics Branding, I've architected 
+                Currently leading engineering initiatives at Mind & Metrics Branding, I&apos;ve architected 
                 and built multiple full-scale websites from the ground up. My focus has been on creating 
                 scalable, high-performance solutions that significantly reduce client costs while maintaining 
                 exceptional quality.
@@ -51,12 +51,12 @@ export default function About() {
               <p className="text-light/80">
                 During my 6 years as a Senior Instructor at Turing School of Software & Design, 
                 I had the privilege of helping hundreds of students from diverse backgrounds transition 
-                into tech careers. From former service industry workers to military veterans, I've 
+                into tech careers. From former service industry workers to military veterans, I&apos;ve 
                 witnessed firsthand how technical education can transform careers and lives.
               </p>
               <p className="text-light/80">
                 As a former violinist and audio engineer, I bring a unique attention to detail and 
-                adaptability to every project. I'm passionate about creating exceptional digital 
+                adaptability to every project. I&apos;m passionate about creating exceptional digital 
                 experiences that combine technical excellence with accessibility and inclusivity.
               </p>
             </div>
