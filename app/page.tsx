@@ -14,7 +14,7 @@ export default function Home() {
             View Projects
           </button>
           <button data-cy="connect-btn" className="border-2 border-accent text-accent hover:bg-accent hover:text-dark px-6 py-3 rounded-lg font-medium transition-all duration-300">
-            Let's Connect
+            Let&apos;s Connect
           </button>
         </nav>
 
