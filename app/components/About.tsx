@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 export default function About() {
   return (
     <section 
-      className="min-h-screen py-20 bg-dark/50"
+      className="min-h-screen py-20"
       aria-labelledby="about-heading"
       data-cy="about-section"
     >
@@ -49,15 +49,15 @@ export default function About() {
                 exceptional quality.
               </p>
               <p className="text-light/80">
-                During my 6 years as a Senior Instructor at Turing School of Software & Design, 
-                I had the privilege of helping hundreds of students from diverse backgrounds transition 
-                into tech careers. From former service industry workers to military veterans, I&apos;ve 
-                witnessed firsthand how technical education can transform careers and lives.
+                During my 6 years as a Senior Instructor at the Turing School of Software & Design, 
+                I led development on hundreds of civic technology projects while mentoring diverse teams. 
+                This experience honed my ability to architect solutions, provide thorough code reviews, 
+                and guide technical decisions across complex projects.
               </p>
               <p className="text-light/80">
-                As a former violinist and audio engineer, I bring a unique attention to detail and 
-                adaptability to every project. I&apos;m passionate about creating exceptional digital 
-                experiences that combine technical excellence with accessibility and inclusivity.
+                My background as a violinist and audio engineer has instilled a deep appreciation for 
+                precision and user experience. This unique perspective drives my passion for creating 
+                exceptional digital solutions that prioritize both technical excellence and accessibility.
               </p>
             </div>
           </motion.div>
@@ -88,9 +88,9 @@ export default function About() {
               </h3>
               <ul className="space-y-2 text-light/70">
                 <li>• Reduced client development costs by over 75%</li>
-                <li>• 6+ years empowering new developers</li>
+                <li>• Led 100+ technical projects as instructor/developer</li>
                 <li>• Built 5+ full-scale websites in 6 months</li>
-                <li>• Background in music and audio engineering</li>
+                <li>• Mentored 200+ developers into tech careers</li>
               </ul>
             </div>
           </motion.div>
