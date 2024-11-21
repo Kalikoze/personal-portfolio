@@ -1,45 +1,22 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiGithub, FiLinkedin } from 'react-icons/fi'
 import ParticlesBackground from './ParticlesBackground'
+import GradientBackground from '@/app/components/ui/GradientBackground'
 import Section from '@/app/components/layout/Section'
-
-const socialLinks = [
-  {
-    name: 'GitHub',
-    url: 'https://github.com/Kalikoze',
-    icon: FiGithub,
-  },
-  {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/travisrollins/',
-    icon: FiLinkedin,
-  },
-] as const;
+import { socialLinks } from '@/app/data/social'
 
 export default function Hero() {
   const backgroundElement = (
     <>
       <ParticlesBackground />
-      <motion.div 
-        className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-secondary/10 blur-3xl"
-        animate={{
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <GradientBackground />
     </>
   );
 
   return (
     <Section
       id="hero-heading"
-      className="flex items-center py-0"
       hideHeader
       backgroundElement={backgroundElement}
     >

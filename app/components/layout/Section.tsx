@@ -21,7 +21,7 @@ export default function Section({
 }: SectionProps) {
   return (
     <section
-      className={`relative min-h-screen ${className}`}
+      className={`relative min-h-screen flex items-center ${className}`}
       aria-labelledby={id}
     >
       {backgroundElement}
