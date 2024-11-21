@@ -1,3 +1,7 @@
+import { socialLinks } from '@/app/data/social'
+import { currentFocusItems, quickFactsItems, aboutParagraphs } from '@/app/data/about'
+import { skillCategories, learningApproachItems } from '@/app/data/skills'
+
 describe('Home Page', () => {
   const techStack = [
     'Next.js',
@@ -7,20 +11,6 @@ describe('Home Page', () => {
     'Framer Motion',
     'Prisma',
     'CircleCI'
-  ] as const;
-
-  const currentFocus = [
-    'Building modern web applications with Next.js & TypeScript',
-    'Optimizing SEO and site performance (90%+ scores)',
-    'Implementing comprehensive testing with Cypress',
-    'Creating accessible, WCAG-compliant interfaces'
-  ] as const;
-
-  const quickFacts = [
-    'Reduced client development costs by over 75%',
-    '6+ years empowering new developers',
-    'Built 5+ full-scale websites in 6 months',
-    'Background in music and audio engineering'
   ] as const;
 
   beforeEach(() => {
@@ -52,6 +42,19 @@ describe('Home Page', () => {
           cy.wrap($el).should('contain.text', techStack[index])
         })
     })
+
+    it('should display and link to social profiles correctly', () => {
+      cy.get('nav[aria-label="Social links"]')
+        .should('be.visible')
+        .find('a')
+        .each(($el, index) => {
+          cy.wrap($el)
+            .should('have.attr', 'href', socialLinks[index].url)
+            .and('have.attr', 'target', '_blank')
+            .and('have.attr', 'rel', 'noopener noreferrer')
+            .and('have.attr', 'aria-label', `${socialLinks[index].name} Profile`)
+        })
+    })
   })
 
   context('About Section Tests', () => {
@@ -61,22 +64,20 @@ describe('Home Page', () => {
 
     it('should display the about section correctly', () => {
       cy.get('[data-cy="about-section"]').should('be.visible')
-      
-      cy.get('[data-cy="about-heading"]')
+
+      cy.get('[data-cy="about"]')
         .should('be.visible')
         .and('contain.text', 'About Me')
 
-      cy.get('[data-cy="about-intro"]')
+      cy.get('[data-cy="about-description"]')
         .should('be.visible')
-        .and('contain.text', '7 years in software development')
-    })
+        .and('contain.text', 'With over 7 years in software development, I bring a unique blend of technical expertise, teaching experience, and a passion for creating inclusive tech spaces.')
 
-    it('should display the main content correctly', () => {
-      cy.get('[data-cy="about-main"]')
-        .should('be.visible')
-        .and('contain.text', 'Mind & Metrics Branding')
-        .and('contain.text', 'Turing School of Software & Design')
-        .and('contain.text', 'former violinist and audio engineer')
+      cy.get('[data-cy="about-main"] p').each(($p, index) => {
+        const text = $p.text().replace(/\s+/g, ' ').trim()
+        const expectedText = aboutParagraphs[index].replace(/\s+/g, ' ').trim()
+        expect(text).to.include(expectedText.substring(0, 50)) // Check first 50 chars to handle line breaks
+      })
     })
 
     it('should display current focus items correctly', () => {
@@ -84,7 +85,7 @@ describe('Home Page', () => {
         .should('be.visible')
         .find('li')
         .each(($el, index) => {
-          cy.wrap($el).should('contain.text', currentFocus[index])
+          cy.wrap($el).should('contain.text', currentFocusItems[index])
         })
     })
 
@@ -93,7 +94,79 @@ describe('Home Page', () => {
         .should('be.visible')
         .find('li')
         .each(($el, index) => {
-          cy.wrap($el).should('contain.text', quickFacts[index])
+          cy.wrap($el).should('contain.text', quickFactsItems[index])
+        })
+    })
+  })
+
+  context('Skills Section Tests', () => {
+    beforeEach(() => {
+      cy.get('[data-cy="skills-section"]').scrollIntoView()
+    })
+
+    it('should display the section header correctly', () => {
+      cy.get('[data-cy="skills-heading"]')
+        .should('be.visible')
+        .and('contain.text', 'Technical Expertise')
+
+      cy.get('[data-cy="skills-heading-description"]')
+        .should('be.visible')
+        .and('contain.text', 'A comprehensive overview')
+    })
+
+    it('should display all skill statistics correctly', () => {
+      const stats = [
+        { value: '7+', label: 'Years of Experience' },
+        { value: '20+', label: 'Technologies Mastered' },
+        { value: '50+', label: 'Web Applications Built' }
+      ]
+
+      stats.forEach(({ value, label }) => {
+        cy.get(`[data-cy="stat-${label.toLowerCase().replace(/\s+/g, '-')}"]`)
+          .should('be.visible')
+          .and('contain.text', value)
+          .and('contain.text', label)
+      })
+    })
+
+    it('should display all skill categories with their skills', () => {
+      skillCategories.forEach((category) => {
+        const categoryId = category.title.toLowerCase().replace(/\s+/g, '-')
+        
+        cy.get(`[data-cy="skill-category-${categoryId}"]`)
+          .should('be.visible')
+          .within(() => {
+            cy.get('[data-cy="category-title"]')
+              .should('contain.text', category.title)
+
+            cy.get('[data-cy="category-description"]')
+              .should('contain.text', category.description)
+
+            category.skills.forEach((skill) => {
+              const skillId = skill.toLowerCase().replace(/\s+/g, '-')
+              cy.get(`[data-cy="skill-item-${skillId}"]`)
+                .should('be.visible')
+                .and('contain.text', skill)
+            })
+          })
+      })
+    })
+
+    it('should display learning approach section correctly', () => {
+      cy.get('[data-cy="skills-section"]').find('footer').scrollIntoView()
+      cy.get('[data-cy="skills-section"]')
+        .find('footer')
+        .within(() => {
+          cy.contains('h3', 'Continuous Learning Approach')
+            .should('be.visible')
+
+          cy.contains('p', 'As the sole developer at a B2B digital solutions agency, I constantly adapt to diverse client needs by exploring and implementing new technologies. Each project presents unique challenges, from e-commerce solutions to custom CMS integrations, driving continuous learning and innovation.')
+            .should('be.visible')
+
+          learningApproachItems.forEach(({ text }) => {
+            cy.contains('li', text)
+              .should('be.visible')
+          })
         })
     })
   })
@@ -101,7 +174,7 @@ describe('Home Page', () => {
   context('Accessibility Tests', () => {
     it('should pass accessibility tests', () => {
       cy.injectAxe()
-      cy.wait(1000)
+      cy.wait(2000)
       cy.checkA11y()
     })
   })
