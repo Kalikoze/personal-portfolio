@@ -20,6 +20,7 @@ export default function SkillCategory({
 }: SkillCategoryProps) {
   return (
     <motion.article
+      data-cy={`skill-category-${title.toLowerCase().replace(/\s+/g, '-')}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -28,16 +29,17 @@ export default function SkillCategory({
     >
       <header className="flex items-center gap-3 mb-4">
         <Icon className="w-6 h-6 text-accent" />
-        <h3 className="text-xl font-display font-semibold text-light">
+        <h3 className="text-xl font-display font-semibold text-light" data-cy="category-title">
           {title}
         </h3>
       </header>
-      <p className="text-light/60 mb-6 text-sm">
+      <p className="text-light/60 mb-6 text-sm" data-cy="category-description">
         {description}
       </p>
-      <ul className="flex flex-wrap gap-2" role="list">
+      <ul className="flex flex-wrap gap-2" role="list" data-cy="skills-list">
         {skills.map((skill, index) => (
           <motion.li
+            data-cy={`skill-item-${skill.toLowerCase().replace(/\s+/g, '-')}`}
             key={skill}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
