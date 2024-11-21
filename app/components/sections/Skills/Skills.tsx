@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiCode, FiDatabase, FiTool, FiBook } from 'react-icons/fi'
 import SkillCategory from '@/app/components/sections/Skills/SkillCategory'
 import SkillStats from '@/app/components/sections/Skills/SkillStats'
 import Section from '@/app/components/layout/Section'
@@ -15,7 +14,7 @@ export default function Skills() {
       title="Technical Expertise"
       description="A comprehensive overview of my technical skills and areas of expertise,
                   along with emerging technologies I'm exploring."
-      data-cy="skills-section"
+      dataCy="skills-section"
       backgroundElement={<GradientBackground />}
     >
       <SkillStats />

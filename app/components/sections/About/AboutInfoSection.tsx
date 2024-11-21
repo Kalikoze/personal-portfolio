@@ -1,10 +1,10 @@
-type SidebarSectionProps = {
+type InfoSectionProps = {
   id: string
   title: string
   items: readonly string[]
 }
 
-export default function AboutSidebarSection({ id, title, items }: SidebarSectionProps) {
+export default function AboutInfoSection({ id, title, items }: InfoSectionProps) {
   return (
     <section 
       data-cy={id} 

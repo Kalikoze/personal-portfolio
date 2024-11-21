@@ -9,7 +9,7 @@ export const quickFactsItems = [
   'Reduced client development costs by over 75%',
   'Led 100+ technical projects as instructor/developer',
   'Built 5+ full-scale websites in 6 months',
-  'Mentored 200+ developers into tech careers'
+  'Mentored 1000+ developers into tech careers'
 ] as const;
 
 export const aboutParagraphs = [

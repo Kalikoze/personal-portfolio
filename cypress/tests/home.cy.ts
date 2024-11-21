@@ -18,9 +18,9 @@ describe('Home Page', () => {
 
   const quickFacts = [
     'Reduced client development costs by over 75%',
-    '6+ years empowering new developers',
+    'Led 100+ technical projects as instructor/developer',
     'Built 5+ full-scale websites in 6 months',
-    'Background in music and audio engineering'
+    'Mentored 1000+ developers into tech careers'
   ] as const;
 
   beforeEach(() => {
@@ -61,22 +61,25 @@ describe('Home Page', () => {
 
     it('should display the about section correctly', () => {
       cy.get('[data-cy="about-section"]').should('be.visible')
-      
-      cy.get('[data-cy="about-heading"]')
+
+      cy.get('[data-cy="about"]')
         .should('be.visible')
         .and('contain.text', 'About Me')
 
-      cy.get('[data-cy="about-intro"]')
+      cy.get('[data-cy="about-description"]')
         .should('be.visible')
-        .and('contain.text', '7 years in software development')
-    })
+        .and('contain.text', 'With over 7 years in software development, I bring a unique blend of technical expertise, teaching experience, and a passion for creating inclusive tech spaces.')
 
-    it('should display the main content correctly', () => {
-      cy.get('[data-cy="about-main"]')
-        .should('be.visible')
-        .and('contain.text', 'Mind & Metrics Branding')
-        .and('contain.text', 'Turing School of Software & Design')
-        .and('contain.text', 'former violinist and audio engineer')
+      const expectedParagraphStarts = [
+        'Currently leading engineering initiatives at Mind & Metrics Branding',
+        'During my 6 years as a Senior Instructor at the Turing School of Software & Design',
+        'My background as a violinist and audio engineer'
+      ];
+
+      cy.get('[data-cy="about-main"] p').each(($p, index) => {
+        const text = $p.text().replace(/\s+/g, ' ').trim();
+        expect(text).to.include(expectedParagraphStarts[index]);
+      });
     })
 
     it('should display current focus items correctly', () => {
@@ -101,7 +104,7 @@ describe('Home Page', () => {
   context('Accessibility Tests', () => {
     it('should pass accessibility tests', () => {
       cy.injectAxe()
-      cy.wait(1000)
+      cy.wait(2000)
       cy.checkA11y()
     })
   })

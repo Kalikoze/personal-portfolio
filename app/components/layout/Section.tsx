@@ -4,6 +4,7 @@ type SectionProps = {
   id: string
   title?: string
   description?: string
+  dataCy?: string
   className?: string
   children: React.ReactNode
   backgroundElement?: React.ReactNode
@@ -14,6 +15,7 @@ export default function Section({
   id,
   title,
   description,
+  dataCy,
   className = "",
   children,
   backgroundElement,
@@ -23,6 +25,7 @@ export default function Section({
     <section
       className={`relative min-h-screen flex items-center ${className}`}
       aria-labelledby={id}
+      data-cy={dataCy}
     >
       {backgroundElement}
       <div className="relative max-w-6xl mx-auto px-4 w-full">
@@ -33,6 +36,7 @@ export default function Section({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="mb-16"
+            data-cy={`${id}`}
           >
             <h2
               id={id}
@@ -43,7 +47,10 @@ export default function Section({
               </span>
             </h2>
             {description && (
-              <p className="text-light/60 text-lg max-w-2xl">
+              <p 
+                className="text-light/60 text-lg max-w-2xl"
+                data-cy={`${id}-description`}
+              >
                 {description}
               </p>
             )}
