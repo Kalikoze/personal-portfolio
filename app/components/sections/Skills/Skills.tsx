@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { FiCode, FiDatabase, FiTool, FiBook } from 'react-icons/fi'
+import SkillCategory from '@/app/components/sections/Skills/SkillCategory'
+import SkillStats from '@/app/components/sections/Skills/SkillStats'
 
 const skillCategories = [
   {
@@ -54,6 +56,12 @@ const skillCategories = [
   },
 ] as const
 
+const learningApproachItems = [
+  { text: 'Project-Driven Innovation', color: 'bg-primary' },
+  { text: 'Tech Conference Participation', color: 'bg-accent' },
+  { text: 'Industry Research & Trends', color: 'bg-secondary' }
+] as const;
+
 export default function Skills() {
   return (
     <section
@@ -95,68 +103,16 @@ export default function Skills() {
           </p>
         </motion.header>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
-        >
-          <div className="bg-light/5 rounded-lg p-6 text-center">
-            <div className="text-3xl font-bold text-accent mb-2">7+</div>
-            <div className="text-light/60">Years of Experience</div>
-          </div>
-          <div className="bg-light/5 rounded-lg p-6 text-center">
-            <div className="text-3xl font-bold text-accent mb-2">20+</div>
-            <div className="text-light/60">Technologies Mastered</div>
-          </div>
-          <div className="bg-light/5 rounded-lg p-6 text-center">
-            <div className="text-3xl font-bold text-accent mb-2">50+</div>
-            <div className="text-light/60">Web Applications Built</div>
-          </div>
-        </motion.div>
+        <SkillStats />
 
         <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
+          {skillCategories.map((category, index) => (
+            <SkillCategory
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="bg-light/5 rounded-lg p-6 h-full"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <category.icon className="w-6 h-6 text-accent" />
-                <h3 className="text-xl font-display font-semibold text-light">
-                  {category.title}
-                </h3>
-              </div>
-              <p className="text-light/60 mb-6 text-sm">
-                {category.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, index) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.3,
-                      delay: (categoryIndex * 0.1) + (index * 0.1)
-                    }}
-                    className={`px-2.5 py-1.5 rounded-full text-sm font-medium
-                      ${category.title === 'Exploring Next'
-                        ? 'bg-light/5 text-light/70 border border-light/20'
-                        : 'bg-gradient-to-r from-primary to-accent text-dark font-semibold'
-                      }`}
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
+              {...category}
+              categoryIndex={index}
+              isExploring={category.title === 'Exploring Next'}
+            />
           ))}
         </div>
 
@@ -175,20 +131,14 @@ export default function Skills() {
             by exploring and implementing new technologies. Each project presents unique challenges,
             from e-commerce solutions to custom CMS integrations, driving continuous learning and innovation.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary"></span>
-              <span className="text-light/80">Project-Driven Innovation</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent"></span>
-              <span className="text-light/80">Tech Conference Participation</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-secondary"></span>
-              <span className="text-light/80">Industry Research & Trends</span>
-            </div>
-          </div>
+          <ul className="flex flex-wrap gap-4" role="list">
+            {learningApproachItems.map(({ text, color }) => (
+              <li key={text} className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${color}`}></span>
+                <span className="text-light/80">{text}</span>
+              </li>
+            ))}
+          </ul>
         </motion.footer>
       </div>
     </section>
