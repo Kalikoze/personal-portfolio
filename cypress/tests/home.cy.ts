@@ -1,6 +1,8 @@
 import { socialLinks } from '@/app/data/social'
 import { currentFocusItems, quickFactsItems, aboutParagraphs } from '@/app/data/about'
 import { skillCategories, learningApproachItems } from '@/app/data/skills'
+import { Project } from '@/app/data/projects'
+
 describe('Home Page', () => {
   const techStack = [
     'Next.js',
@@ -189,12 +191,12 @@ describe('Home Page', () => {
 
     it('should display all featured projects correctly', () => {
       cy.get('@projectsData').then((data: any) => {
-        const featuredProjects = data.projects.filter((project: any) => project.featured)
+        const featuredProjects = data.projects.filter((project: Project) => project.featured)
 
         cy.get('[data-cy="project-card"]')
           .should('have.length', featuredProjects.length)
           .each(($card, index) => {
-            const project = featuredProjects[index]
+            const project: Project = featuredProjects[index]
 
             cy.wrap($card)
               .find('[data-cy="project-title"]')
@@ -229,29 +231,29 @@ describe('Home Page', () => {
             cy.wrap($card)
               .find('[data-cy="desktop-preview"] img')
               .should('have.attr', 'src')
-              .and('include', project.desktopImage.split('/').pop().split('.')[0])
+              .and('include', project.desktopImage.split('/').pop()?.split('.')[0] ?? '')
 
             cy.wrap($card)
               .find('[data-cy="mobile-preview"] img')
               .should('have.attr', 'src')
-              .and('include', project.mobileImage.split('/').pop().split('.')[0])
+              .and('include', project.mobileImage.split('/').pop()?.split('.')[0] ?? '')
           })
       })
     })
 
     it('should only display featured projects', () => {
       cy.get('@projectsData').then((data: any) => {
-        const featuredProjects = data.projects.filter((project: any) => project.featured)
-        const nonFeaturedProjects = data.projects.filter((project: any) => !project.featured)
+        const featuredProjects = data.projects.filter((project: Project) => project.featured)
+        const nonFeaturedProjects = data.projects.filter((project: Project) => !project.featured)
 
         // Verify featured projects are shown
-        featuredProjects.forEach(project => {
+        featuredProjects.forEach((project: Project) => {
           cy.contains('[data-cy="project-title"]', project.title)
             .should('exist')
         })
 
         // Verify non-featured projects are not shown
-        nonFeaturedProjects.forEach(project => {
+        nonFeaturedProjects.forEach((project: Project) => {
           cy.contains('[data-cy="project-title"]', project.title)
             .should('not.exist')
         })
