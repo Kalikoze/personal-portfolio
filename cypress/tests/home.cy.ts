@@ -30,7 +30,7 @@ describe('Home Page', () => {
 
       cy.get('[data-cy="title"]')
         .should('be.visible')
-        .and('contain.text', 'Full Stack Developer & Engineering Lead')
+        .and('contain.text', 'Lead Software Engineer')
 
       cy.get('[data-cy="hero-description"]')
         .should('be.visible')
@@ -42,6 +42,12 @@ describe('Home Page', () => {
         .each(($el, index) => {
           cy.wrap($el).should('contain.text', techStack[index])
         })
+    })
+
+    it('should display the profile image correctly', () => {
+      cy.get('figure img')
+        .should('be.visible')
+        .and('have.attr', 'alt', 'Travis Rollins')
     })
 
     it('should display and link to social profiles correctly', () => {
