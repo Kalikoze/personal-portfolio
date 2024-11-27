@@ -13,14 +13,16 @@ export default function ProjectCard({
 }: Project) {
   return (
     <motion.article 
+      data-cy="project-card"
       className="group bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden border border-light/10 hover:border-primary/50 transition-all duration-500 md:flex"
       whileHover={{ y: -5 }}
       transition={{ duration: 0.2 }}
     >
       {/* Device Preview Section */}
-      <figure className="relative md:w-[45%] h-64 md:h-auto bg-dark/60 overflow-hidden p-4">
+      <figure data-cy="project-images" className="relative md:w-[45%] h-64 md:h-auto bg-dark/60 overflow-hidden p-4">
         {/* Desktop Preview */}
         <motion.div 
+          data-cy="desktop-preview"
           className="absolute inset-x-0 top-0 h-full flex items-center justify-center transform group-hover:-translate-y-2 transition-transform duration-500"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -38,6 +40,7 @@ export default function ProjectCard({
 
         {/* Mobile Preview */}
         <motion.div 
+          data-cy="mobile-preview"
           className="absolute right-8 bottom-0 w-20 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:-translate-y-4 transition-all duration-500"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -55,17 +58,18 @@ export default function ProjectCard({
       </figure>
       
       {/* Content Section */}
-      <section className="md:w-[55%] p-6 md:p-8 space-y-4 md:space-y-6">
-        <h3 className="text-2xl font-display font-semibold text-accent/60 group-hover:text-accent transition-colors">
+      <section data-cy="project-content" className="md:w-[55%] p-6 md:p-8 space-y-4 md:space-y-6">
+        <h3 data-cy="project-title" className="text-2xl font-display font-semibold text-accent/60 group-hover:text-accent transition-colors">
           {title}
         </h3>
-        <p className="text-light/70 leading-relaxed">{description}</p>
+        <p data-cy="project-description" className="text-light/70 leading-relaxed">{description}</p>
         
         {/* Technologies */}
-        <ul className="flex flex-wrap gap-2" role="list">
+        <ul data-cy="project-technologies" className="flex flex-wrap gap-2" role="list">
           {technologies.map((tech, index) => (
             <motion.li 
               key={tech}
+              data-cy={`technology-${tech.toLowerCase().replace(/\s+/g, '-')}`}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -80,8 +84,13 @@ export default function ProjectCard({
           ))}
         </ul>
         
-        <nav className="flex gap-6 pt-4">
+        <nav 
+          data-cy="project-links" 
+          aria-label={`Links for ${title} project`}
+          className="flex gap-6 pt-4"
+        >
           <motion.a 
+            data-cy="project-url"
             href={projectUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -95,6 +104,7 @@ export default function ProjectCard({
           </motion.a>
           {githubUrl && (
             <motion.a 
+              data-cy="github-url"
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"

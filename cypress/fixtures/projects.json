@@ -1,0 +1,46 @@
+{
+  "projects": [
+    {
+      "title": "PSC Construction",
+      "description": "A comprehensive website for a leading construction company in Omaha, featuring server-side rendering, responsive design, and integrated email functionality. Showcases services in site preparation, demolition, excavation, and underground utilities while maintaining high performance and accessibility standards.",
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "DaisyUI",
+        "Framer Motion",
+        "SendGrid",
+        "Cypress",
+        "Sharp"
+      ],
+      "desktopImage": "/assets/psc-desktop.png",
+      "mobileImage": "/assets/psc-mobile.png",
+      "projectUrl": "https://www.psccompanies.com/",
+      "githubUrl": "https://github.com/Kalikoze/psc-construction",
+      "featured": true
+    },
+    {
+      "title": "Precision Surveying & Consulting",
+      "description": "A professional surveying company website showcasing expertise in construction surveys, as-built surveys, and Ground Penetrating Radar (GPR) services. Features server-side rendering, responsive design, interactive maps, and integrated email functionality while maintaining high performance and accessibility standards.",
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "SendGrid",
+        "Cypress",
+        "Sharp",
+        "Embla Carousel",
+        "React Leaflet",
+        "React Hook Form"
+      ],
+      "desktopImage": "/assets/precision-desktop.png",
+      "mobileImage": "/assets/precision-mobile.png",
+      "projectUrl": "https://www.precisionsurveyingandconsulting.com/",
+      "githubUrl": "https://github.com/Kalikoze/precision-surveying",
+      "featured": true
+    }
+  ]
+} 

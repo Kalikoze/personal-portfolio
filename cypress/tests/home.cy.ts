@@ -1,7 +1,6 @@
 import { socialLinks } from '@/app/data/social'
 import { currentFocusItems, quickFactsItems, aboutParagraphs } from '@/app/data/about'
 import { skillCategories, learningApproachItems } from '@/app/data/skills'
-
 describe('Home Page', () => {
   const techStack = [
     'Next.js',
@@ -132,7 +131,7 @@ describe('Home Page', () => {
     it('should display all skill categories with their skills', () => {
       skillCategories.forEach((category) => {
         const categoryId = category.title.toLowerCase().replace(/\s+/g, '-')
-        
+
         cy.get(`[data-cy="skill-category-${categoryId}"]`)
           .should('be.visible')
           .within(() => {
@@ -168,6 +167,95 @@ describe('Home Page', () => {
               .should('be.visible')
           })
         })
+    })
+  })
+
+  context('Projects Section Tests', () => {
+    beforeEach(() => {
+      cy.fixture('projects.json').as('projectsData')
+      cy.get('[data-cy="projects-section"]').scrollIntoView()
+    })
+
+    it('should display the projects section header correctly', () => {
+      cy.get('[data-cy="projects-section"]')
+        .should('be.visible')
+        .within(() => {
+          cy.contains('h2', 'Featured Projects')
+            .should('be.visible')
+          cy.contains('p', 'Explore a selection of web applications')
+            .should('be.visible')
+        })
+    })
+
+    it('should display all featured projects correctly', () => {
+      cy.get('@projectsData').then((data: any) => {
+        const featuredProjects = data.projects.filter((project: any) => project.featured)
+
+        cy.get('[data-cy="project-card"]')
+          .should('have.length', featuredProjects.length)
+          .each(($card, index) => {
+            const project = featuredProjects[index]
+
+            cy.wrap($card)
+              .find('[data-cy="project-title"]')
+              .should('contain.text', project.title)
+
+            cy.wrap($card)
+              .find('[data-cy="project-description"]')
+              .should('contain.text', project.description)
+
+            cy.wrap($card)
+              .find('[data-cy="project-technologies"] li')
+              .should('have.length', project.technologies.length)
+              .each(($tech, techIndex) => {
+                cy.wrap($tech)
+                  .should('contain.text', project.technologies[techIndex])
+              })
+
+            cy.wrap($card)
+              .find('[data-cy="project-url"]')
+              .should('have.attr', 'href', project.projectUrl)
+              .and('have.attr', 'target', '_blank')
+              .and('have.attr', 'rel', 'noopener noreferrer')
+
+            if (project.githubUrl) {
+              cy.wrap($card)
+                .find('[data-cy="github-url"]')
+                .should('have.attr', 'href', project.githubUrl)
+                .and('have.attr', 'target', '_blank')
+                .and('have.attr', 'rel', 'noopener noreferrer')
+            }
+
+            cy.wrap($card)
+              .find('[data-cy="desktop-preview"] img')
+              .should('have.attr', 'src')
+              .and('include', project.desktopImage.split('/').pop().split('.')[0])
+
+            cy.wrap($card)
+              .find('[data-cy="mobile-preview"] img')
+              .should('have.attr', 'src')
+              .and('include', project.mobileImage.split('/').pop().split('.')[0])
+          })
+      })
+    })
+
+    it('should only display featured projects', () => {
+      cy.get('@projectsData').then((data: any) => {
+        const featuredProjects = data.projects.filter((project: any) => project.featured)
+        const nonFeaturedProjects = data.projects.filter((project: any) => !project.featured)
+
+        // Verify featured projects are shown
+        featuredProjects.forEach(project => {
+          cy.contains('[data-cy="project-title"]', project.title)
+            .should('exist')
+        })
+
+        // Verify non-featured projects are not shown
+        nonFeaturedProjects.forEach(project => {
+          cy.contains('[data-cy="project-title"]', project.title)
+            .should('not.exist')
+        })
+      })
     })
   })
 
