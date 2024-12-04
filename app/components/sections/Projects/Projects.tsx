@@ -11,7 +11,7 @@ export default function Projects() {
     <Section
       id="projects"
       title="Featured Projects"
-      description="Explore a selection of web applications I've built, showcasing innovative solutions and technical excellence."
+      description="Explore a selection of web applications I've built, showcasing my innovative solutions and technical excellence."
       dataCy="projects-section"
       className="justify-center"
     >

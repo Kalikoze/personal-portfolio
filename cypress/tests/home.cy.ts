@@ -2,6 +2,7 @@ import { socialLinks } from '@/app/data/social'
 import { currentFocusItems, quickFactsItems, aboutParagraphs } from '@/app/data/about'
 import { skillCategories, learningApproachItems } from '@/app/data/skills'
 import { Project } from '@/app/data/projects'
+import { experiences } from '@/app/data/experience'
 
 describe('Home Page', () => {
   const techStack = [
@@ -264,6 +265,62 @@ describe('Home Page', () => {
             .should('not.exist')
         })
       })
+    })
+  })
+
+  context('Experience Section Tests', () => {
+    beforeEach(() => {
+      cy.get('[data-cy="experience-section"]').scrollIntoView()
+    })
+
+    it('should display the experience section header correctly', () => {
+      cy.get('[data-cy="experience-section"]')
+        .should('be.visible')
+        .within(() => {
+          cy.contains('h2', 'Professional Experience')
+            .should('be.visible')
+          cy.contains('p', 'A journey through my professional career, showcasing my growth and contributions in the tech industry.')
+            .should('be.visible')
+        })
+    })
+
+    it('should display all experience entries correctly', () => {
+      cy.get('[data-cy="experience-section"]')
+        .find('[data-cy^="job-position-"]')
+        .should('have.length', experiences.length)
+        .each(($card, index) => {
+          const experience = experiences[index]
+          cy.get(`[data-cy="job-position-${index}"]`).scrollIntoView()
+
+          cy.wrap($card)
+            .within(() => {
+              cy.contains('h3', experience.title)
+                .should('be.visible')
+
+              cy.contains('p', `${experience.company} | ${experience.location}`)
+                .should('be.visible')
+
+              cy.contains('p', experience.date)
+                .should('be.visible')
+
+              experience.details.forEach(detail => {
+                console.log('detail', detail)
+                cy.contains('li', detail)
+                  .should('be.visible')
+              })
+            })
+        })
+    })
+
+    it('should display experience entries in correct order', () => {
+      cy.get('[data-cy="experience-section"]')
+        .find('[data-cy^="job-position-"]')
+        .each(($card, index) => {
+          cy.get(`[data-cy="job-position-${index}"]`).scrollIntoView()
+          cy.wrap($card)
+            .contains('h3', experiences[index].title)
+            .should('be.visible')
+        })
     })
   })
 

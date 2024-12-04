@@ -21,7 +21,7 @@ export default function Experience() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             className="bg-light/5 p-6 rounded-lg shadow-lg"
-            data-cy={`experience-${index}`}
+            data-cy={`job-position-${index}`}
           >
             <h3 className="text-2xl font-display font-semibold text-accent">
               {experience.title}
