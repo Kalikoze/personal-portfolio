@@ -20,7 +20,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
-            className="bg-dark/40 p-6 rounded-lg shadow-lg"
+            className="bg-light/5 p-6 rounded-lg shadow-lg"
             data-cy={`experience-${index}`}
           >
             <h3 className="text-2xl font-display font-semibold text-accent">

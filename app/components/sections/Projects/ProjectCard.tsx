@@ -14,7 +14,7 @@ export default function ProjectCard({
   return (
     <motion.article 
       data-cy="project-card"
-      className="group bg-dark/40 backdrop-blur-sm rounded-xl overflow-hidden border border-light/10 hover:border-primary/50 transition-all duration-500 md:flex"
+      className="group bg-light/5 rounded-lg shadow-lg backdrop-blur-sm overflow-hidden border border-transparent hover:border-primary/50 transition-[border-color] duration-300 md:flex"
       whileHover={{ y: -5 }}
       transition={{ duration: 0.2 }}
     >
