@@ -7,7 +7,7 @@ type StatProps = {
 
 function Stat({ value, label }: StatProps) {
   return (
-    <article className="bg-light/5 rounded-lg p-6 text-center" data-cy={`stat-${label.toLowerCase().replace(/\s+/g, '-')}`}>
+    <article className="bg-light/5 rounded-lg shadow-lg p-6 text-center" data-cy={`stat-${label.toLowerCase().replace(/\s+/g, '-')}`}>
       <strong className="text-3xl font-bold text-accent mb-2 block">{value}</strong>
       <span className="text-light/60">{label}</span>
     </article>

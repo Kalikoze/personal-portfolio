@@ -21,7 +21,7 @@ export const aboutParagraphs = [
    I led development on hundreds of civic technology projects while mentoring diverse teams. 
    This experience honed my ability to architect solutions, provide thorough code reviews, 
    and guide technical decisions across complex projects.`,
-  `My background as a violinist and audio engineer has instilled a deep appreciation for 
+  `My background as a violist and audio engineer has instilled a deep appreciation for 
    precision and user experience. This unique perspective drives my passion for creating 
    exceptional digital solutions that prioritize both technical excellence and accessibility.`
 ] as const;

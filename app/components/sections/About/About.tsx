@@ -21,7 +21,7 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
           data-cy="about-main"
-          className="bg-light/5 rounded-lg p-6 space-y-6"
+          className="bg-light/5 rounded-lg shadow-lg p-6 space-y-6"
         >
           {aboutParagraphs.map((paragraph, index) => (
             <p key={index} className="text-light/80" data-cy={index === 0 ? "about-intro" : undefined}>

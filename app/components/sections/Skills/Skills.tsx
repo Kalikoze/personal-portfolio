@@ -33,7 +33,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mt-16 bg-light/5 rounded-lg p-6 md:col-span-2"
+        className="mt-16 bg-light/5 rounded-lg shadow-lg p-6 md:col-span-2"
       >
         <h3 className="text-xl font-display font-semibold text-accent mb-4">
           Continuous Learning Approach

@@ -25,7 +25,7 @@ export default function SkillCategory({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-      className="bg-light/5 rounded-lg p-6 h-full"
+      className="bg-light/5 rounded-lg shadow-lg p-6 h-full"
     >
       <header className="flex items-center gap-3 mb-4">
         <Icon className="w-6 h-6 text-accent" />
