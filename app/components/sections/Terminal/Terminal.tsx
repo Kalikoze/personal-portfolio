@@ -31,12 +31,19 @@ export default function Terminal() {
     e.preventDefault()
     if (!currentInput.trim()) return
 
-    const newCommand: Command = {
-      input: currentInput,
-      output: processCommand(currentInput)
+    const output = processCommand(currentInput)
+
+    if (currentInput.toLowerCase().trim() === 'clear') {
+      setCommands([])
+      setShowInitialMessage(true)
+    } else {
+      const newCommand: Command = {
+        input: currentInput,
+        output
+      }
+      setCommands(prev => [...prev, newCommand])
     }
 
-    setCommands(prev => [...prev, newCommand])
     setCurrentInput('')
   }
 
@@ -52,7 +59,7 @@ export default function Terminal() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="relative max-w-4xl mx-auto"
+        className="relative w-full"
         onClick={handleTerminalClick}
       >
         {/* Terminal Window Chrome */}
