@@ -4,32 +4,37 @@ import Link from 'next/link'
 export type CommandOutput = React.ReactNode
 
 const triviaFacts = [
-  "I once wrote a program that accidentally sent 1000 emails in 5 seconds 😅",
-  "My first computer was a Commodore 64 that I used to make BASIC programs",
-  "Before becoming a developer, I produced over 100 beats! 🎵",
-  "I've visited 15 different zoos across the United States 🦁",
-  "I once debugged code in my dreams and the solution actually worked! 💭",
-  "My pets love to 'help' me code by walking across my keyboard",
-  "I can type at 110 WPM, but only when writing code comments 😆",
-  // Add more trivia here!
+  "My cat, Loki, loves to 'help' me code by walking across my keyboard. 😸",
+  "I performed at Red Rocks Amphitheatre with the Colorado Symphony! 🎵",
+  "The San Diego Zoo is my favorite zoo I've visited - their conservation work is amazing! 🦁",
+  "I've lived in 7 different states (KS, IL, PA, OH, CO, CA, NE) - who knows where I'll end up next! 🗺️",
+  "During my college years, I was a rapper and even produced a mixtape! 🎤",
+  "I built a web app that lets you create hip hop beats with samples, effects, and mixing controls - just like a real sampler! 🎹",
+  "One of my favorite places is the Wild Animal Sanctuary in Keenesburg, CO - they rescue and rehabilitate all types of lions, tigers, and bears! 🐯",
+  "I've had the joy of teaching coding to students from all walks of life - from veterans to healthcare workers and more! 📚",
 ];
 
 const programmingJokes = [
   "Why do programmers prefer dark mode? Because light attracts bugs! 🪲",
   "What's a programmer's favorite hangout spot? The Foo Bar! 🍺",
-  "Why do programmers hate nature? It has too many bugs! 🐛",
-  "What's a developer's favorite tea? USB! ☕",
   "Why did the developer go broke? Because they used up all their cache! 💰",
-  // Add more jokes here!
+  "Why was the JavaScript developer sad? Because they didn't Node how to Express their feelings! 😢",
+  "How do you comfort a JavaScript bug? You console it! 🤗",
+  "Why did the CircleCI pipeline feel lonely? It was waiting for its PRs to be approved! ⭕",
+  "Why did ESLint become a teacher? It was tired of everyone ignoring its warnings! ⚠️",
+  "How does TypeScript comfort JavaScript? 'Don't worry, I've got your type!' 🤗",
+  "Why did the function have to go to therapy? It had too many callbacks! 🛋️",
 ];
 
 const techQuotes = [
-  "“Programs must be written for people to read, and only incidentally for machines to execute.” – Harold Abelson",
   "“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” – Martin Fowler",
   "“First, solve the problem. Then, write the code.” – John Johnson",
-  "“Experience is the name everyone gives to their mistakes.” – Oscar Wilde",
-  "“In order to be irreplaceable, one must always be different” – Coco Chanel",
-  // Add more quotes here!
+  "“The most damaging phrase in the language is 'We've always done it this way.'” – Grace Hopper",
+  "“The only way to do great work is to love what you do.” – Steve Jobs",
+  "“Success is not final, failure is not fatal: it is the courage to continue that counts.” – Winston Churchill",
+  "“The expert in anything was once a beginner.” – Helen Hayes",
+  "“In learning you will teach, and in teaching you will learn.” – Phil Collins",
+  "“True knowledge exists in knowing that you know nothing.” – Socrates",
 ];
 
 let seenTrivia = new Set<number>();
@@ -41,12 +46,12 @@ const getRandomUnseen = (array: string[], seenSet: Set<number>): number => {
     seenSet.clear();
     return Math.floor(Math.random() * array.length);
   }
-  
+
   let index;
   do {
     index = Math.floor(Math.random() * array.length);
   } while (seenSet.has(index));
-  
+
   seenSet.add(index);
   return index;
 };
@@ -139,7 +144,7 @@ export const commands = {
   trivia: (): CommandOutput => {
     const index = getRandomUnseen(triviaFacts, seenTrivia);
     const remaining = triviaFacts.length - seenTrivia.size;
-    
+
     return (
       <div className="space-y-2">
         <p>🎯 Random trivia about me:</p>
@@ -156,7 +161,7 @@ export const commands = {
   joke: (): CommandOutput => {
     const index = getRandomUnseen(programmingJokes, seenJokes);
     const remaining = programmingJokes.length - seenJokes.size;
-    
+
     return (
       <div className="space-y-2">
         <p>😄 Here's a programming joke:</p>
@@ -173,7 +178,7 @@ export const commands = {
   quote: (): CommandOutput => {
     const index = getRandomUnseen(techQuotes, seenQuotes);
     const remaining = techQuotes.length - seenQuotes.size;
-    
+
     return (
       <div className="space-y-2">
         <p>💡 Inspirational tech quote:</p>
