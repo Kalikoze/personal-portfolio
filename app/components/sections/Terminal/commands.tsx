@@ -4,9 +4,9 @@ import { triviaFacts, programmingJokes, techQuotes } from './terminalData'
 
 export type CommandOutput = React.ReactNode
 
-let seenTrivia = new Set<number>();
-let seenJokes = new Set<number>();
-let seenQuotes = new Set<number>();
+const seenTrivia = new Set<number>();
+const seenJokes = new Set<number>();
+const seenQuotes = new Set<number>();
 
 const getRandomUnseen = (array: string[], seenSet: Set<number>): number => {
   if (seenSet.size === array.length) {
@@ -41,9 +41,9 @@ export const commands = {
 
   hobbies: (): CommandOutput => (
     <div className="space-y-2">
-      <p>🎮 When I'm not coding, you can find me:</p>
+      <p>🎮 When I&apos;m not coding, you can find me:</p>
       <ul className="list-disc list-inside">
-        <li>Visiting zoos and wildlife sanctuaries - I'm passionate about animals!</li>
+        <li>Visiting zoos and wildlife sanctuaries - I&apos;m passionate about animals!</li>
         <li>Going whale watching and enjoying beach activities when possible</li>
         <li>Playing classic RPGs (especially 16-bit era games like Final Fantasy)</li>
         <li>Enjoying casual sports like bowling, billiards/pool, mini golf, and Top Golf</li>
@@ -71,7 +71,7 @@ export const commands = {
 
   contact: (): CommandOutput => (
     <div className="space-y-2">
-      <p>📫 Let's connect!</p>
+      <p>📫 Let&apos;s connect!</p>
       <p>Email: <a href="mailto:kalikoze@gmail.com" className="text-accent hover:underline">kalikoze@gmail.com</a></p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/travisrollins/" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">linkedin.com/in/travisrollins</a></p>
       <p>GitHub: <a href="https://github.com/kalikoze" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">github.com/kalikoze</a></p>
@@ -82,7 +82,7 @@ export const commands = {
 
   secret: (): CommandOutput => (
     <div className="space-y-2">
-      <p className="text-accent">🎧 You've discovered a secret!</p>
+      <p className="text-accent">🎧 You&apos;ve discovered a secret!</p>
       <p>Before diving into software development, I was actually a beat producer!</p>
       <p>
         <a
@@ -131,7 +131,7 @@ export const commands = {
 
     return (
       <div className="space-y-2">
-        <p>😄 Here's a programming joke:</p>
+        <p>😄 Here&apos;s a programming joke:</p>
         <p className="text-accent">{programmingJokes[index]}</p>
         <p className="text-light/50 mt-2">
           {remaining > 0
