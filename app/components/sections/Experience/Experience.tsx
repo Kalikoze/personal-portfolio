@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Section from '@/app/components/layout/Section'
+import GradientBackground from '@/app/components/ui/GradientBackground'
 import { experiences, type Experience } from '@/app/data/experience'
 
 export default function Experience() {
@@ -11,6 +12,7 @@ export default function Experience() {
       title="Professional Experience"
       description="A journey through my professional career, showcasing my growth and contributions in the tech industry."
       dataCy="experience-section"
+      backgroundElement={<GradientBackground />}
     >
       <div className="space-y-12">
         {experiences.map((experience: Experience, index: number) => (
