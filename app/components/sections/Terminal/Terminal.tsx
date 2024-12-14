@@ -50,6 +50,7 @@ export default function Terminal() {
   return (
     <Section
       id="terminal"
+      dataCy="terminal-section"
       title="Terminal"
       description="Thanks for making it this far! Try out my interactive terminal to discover more about me."
       className="py-20"
@@ -77,11 +78,13 @@ export default function Terminal() {
           {/* Terminal Body */}
           <div
             ref={terminalRef}
+            data-cy="terminal-body"
             className="h-[400px] overflow-y-auto p-4 font-mono text-sm space-y-4"
           >
             {/* Welcome Message */}
             {showInitialMessage && (
               <motion.div
+                data-cy="terminal-welcome"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
@@ -108,6 +111,7 @@ export default function Terminal() {
               <span className="text-primary">$</span>
               <input
                 ref={inputRef}
+                data-cy="terminal-input"
                 type="text"
                 value={currentInput}
                 onChange={(e) => setCurrentInput(e.target.value)}

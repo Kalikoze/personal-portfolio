@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { triviaFacts, programmingJokes, techQuotes } from './terminalData'
+import { triviaFacts, programmingJokes, techQuotes } from '@/app/data/terminalData'
 
 export type CommandOutput = React.ReactNode
 

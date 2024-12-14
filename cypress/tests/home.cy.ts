@@ -2,6 +2,7 @@ import { socialLinks } from '@/app/data/social'
 import { currentFocusItems, quickFactsItems, aboutParagraphs } from '@/app/data/about'
 import { skillCategories, learningApproachItems } from '@/app/data/skills'
 import { Project } from '@/app/data/projects'
+import { triviaFacts, programmingJokes, techQuotes } from '@/app/data/terminalData'
 import { experiences } from '@/app/data/experience'
 
 describe('Home Page', () => {
@@ -321,6 +322,241 @@ describe('Home Page', () => {
             .contains('h3', experiences[index].title)
             .should('be.visible')
         })
+    })
+  })
+
+  describe('Terminal Component', () => {
+    beforeEach(() => {
+      cy.visit('/')
+      cy.get('[data-cy="terminal-section"]').scrollIntoView()
+    })
+
+    it('should display the terminal section correctly', () => {
+      cy.get('[data-cy="terminal-section"]')
+        .should('be.visible')
+        .within(() => {
+          cy.contains('h2', 'Terminal').should('be.visible')
+          cy.contains('p', 'Thanks for making it this far! Try out my interactive terminal to discover more about me.').should('be.visible')
+        })
+    })
+
+    it('should display the initial welcome message', () => {
+      cy.get('[data-cy="terminal-welcome"]')
+        .should('be.visible')
+        .within(() => {
+          cy.contains('Welcome to Travis\'s Interactive Terminal! 🚀').should('be.visible')
+          cy.contains('Type \'help\' to see available commands.').should('be.visible')
+        })
+    })
+
+    it('should have a focused input field when clicking the terminal', () => {
+      cy.get('[data-cy="terminal-body"]').click()
+      cy.get('[data-cy="terminal-input"]').should('be.focused')
+    })
+
+    context('Command Tests', () => {
+      it('should display help command output correctly', () => {
+        const expectedCommands = [
+          'help - Show this help message',
+          'clear - Clear the terminal',
+          'hobbies - See what I do for fun',
+          'resume - Download my resume',
+          'contact - Get my contact information',
+          'fun - Discover fun commands',
+          'secret - ???'
+        ]
+
+        cy.typeCommand('help')
+        cy.contains('Available commands:').should('be.visible')
+        expectedCommands.forEach(command => {
+          cy.contains(command).should('be.visible')
+        })
+      })
+
+      it('should display fun commands correctly', () => {
+        cy.typeCommand('fun')
+        cy.contains('🎲 Try these secret commands:').should('be.visible')
+        cy.contains('trivia - Get a random trivia fact about me').should('be.visible')
+        cy.contains('joke - Get a programming joke').should('be.visible')
+        cy.contains('quote - Get an inspirational tech quote').should('be.visible')
+      })
+
+      it('should clear the terminal when using clear command', () => {
+        cy.typeCommand('help')
+        cy.contains('Available commands:').should('be.visible')
+        cy.typeCommand('clear')
+        cy.contains('Available commands:').should('not.exist')
+        cy.get('[data-cy="terminal-welcome"]').should('be.visible')
+      })
+
+      it('should display hobbies information correctly', () => {
+        const expectedHobbies = [
+          'Visiting zoos and wildlife sanctuaries - I\'m passionate about animals!',
+          'Going whale watching and enjoying beach activities when possible',
+          'Playing classic RPGs (especially 16-bit era games like Final Fantasy)',
+          'Enjoying casual sports like bowling, billiards/pool, mini golf, and Top Golf',
+          'Spending quality time with my fiancee and our pets (1 cat and 2 dogs)'
+        ]
+
+        cy.typeCommand('hobbies')
+
+        cy.contains('🎮 When I\'m not coding, you can find me:')
+          .should('be.visible')
+        expectedHobbies.forEach(hobby => {
+          cy.contains(hobby).should('be.visible')
+        })
+
+        cy.contains('Pro tip: Try typing \'secret\' for a surprise...')
+          .should('be.visible')
+          .and('have.class', 'text-light/50')
+      })
+
+      it('should display contact information with correct links', () => {
+        const contactLinks = [
+          {
+            text: 'kalikoze@gmail.com',
+            href: 'mailto:kalikoze@gmail.com',
+            isExternal: false
+          },
+          {
+            text: 'linkedin.com/in/travisrollins',
+            href: 'https://www.linkedin.com/in/travisrollins/',
+            isExternal: true
+          },
+          {
+            text: 'github.com/kalikoze',
+            href: 'https://github.com/kalikoze',
+            isExternal: true
+          }
+        ];
+
+        cy.typeCommand('contact')
+        cy.contains('📫 Let\'s connect!').should('be.visible')
+
+        contactLinks.forEach(({ text, href, isExternal }) => {
+          cy.contains('a', text)
+            .should('be.visible')
+            .and('have.attr', 'href', href)
+            .then($el => {
+              if (isExternal) {
+                cy.wrap($el)
+                  .should('have.attr', 'target', '_blank')
+                  .and('have.attr', 'rel', 'noopener noreferrer')
+              }
+            })
+        });
+      })
+
+      it('should handle invalid commands', () => {
+        cy.typeCommand('invalidcommand')
+        cy.contains('Command not found: invalidcommand').should('be.visible')
+        cy.contains('Type \'help\' for available commands.').should('be.visible')
+      })
+
+      it('should handle the secret command correctly', () => {
+        cy.typeCommand('secret')
+        cy.contains('🎧 You\'ve discovered a secret!').should('be.visible')
+        cy.contains('Before diving into software development, I was actually a beat producer!').should('be.visible')
+        cy.contains('Check out some of my beats on SoundCloud').should('be.visible')
+          .and('have.attr', 'href', 'https://soundcloud.com/renegadeaudioproductions')
+      })
+
+      it('should display different trivia facts on repeated commands', () => {
+        cy.typeCommand('trivia')
+        cy.get('[data-cy="terminal-body"]')
+          .invoke('text')
+          .then((firstText) => {
+            cy.typeCommand('trivia')
+            cy.get('[data-cy="terminal-body"]')
+              .invoke('text')
+              .should('not.equal', firstText)
+          })
+      })
+
+      it('should display different jokes on repeated commands', () => {
+        cy.typeCommand('joke')
+        cy.get('[data-cy="terminal-body"]')
+          .invoke('text')
+          .then((firstText) => {
+            cy.typeCommand('joke')
+            cy.get('[data-cy="terminal-body"]')
+              .invoke('text')
+              .should('not.equal', firstText)
+          })
+      })
+
+      it('should display different quotes on repeated commands', () => {
+        cy.typeCommand('quote')
+        cy.get('[data-cy="terminal-body"]')
+          .invoke('text')
+          .then((firstText) => {
+            cy.typeCommand('quote')
+            cy.get('[data-cy="terminal-body"]')
+              .invoke('text')
+              .should('not.equal', firstText)
+          })
+      })
+
+      it('should display trivia command output corectly', () => {
+        cy.typeCommand('trivia');
+        cy.contains('🎯 Random trivia about me:').should('be.visible');
+        cy.contains('Type \'trivia\' again to learn another fact!')
+      })
+
+
+      it('should display joke command output correctly', () => {
+        cy.typeCommand('joke')
+        cy.contains('😄 Here\'s a programming joke:').should('be.visible')
+        cy.contains('Type \'joke\' again for another laugh!').should('be.visible')
+      })
+
+      it('should display quote command output correctly', () => {
+        cy.typeCommand('quote')
+        cy.contains('💡 Inspirational tech quote:').should('be.visible')
+        cy.contains('Type \'quote\' again for more inspiration!').should('be.visible')
+      })
+
+      it('should show correct reminaing counts for trivia', () => {
+        const totalTrivia = triviaFacts.length
+        cy.typeCommand('trivia')
+        cy.contains(`${totalTrivia - 1} more to discover`).should('be.visible')
+      })
+
+      it('should show correct remaining counts for jokes', () => {
+        const totalJokes = programmingJokes.length
+        cy.typeCommand('joke')
+        cy.contains(`${totalJokes - 1} more jokes to go`).should('be.visible')
+      })
+
+      it('should show correct remaining counts for quotes', () => {
+        const totalQuotes = techQuotes.length
+        cy.typeCommand('quote')
+        cy.contains(`${totalQuotes - 1} more quotes available`).should('be.visible')
+      })
+
+      it('should reset trivia when all have been shown', () => {
+        for (let i = 0; i <= triviaFacts.length - 1; i++) {
+          cy.typeCommand('trivia')
+        }
+        cy.contains('You\'ve discovered all my trivia facts! Type \'trivia\' again to start over.')
+          .should('be.visible')
+      })
+
+      it('should reset jokes when all have been shown', () => {
+        for (let i = 0; i <= programmingJokes.length - 1; i++) {
+          cy.typeCommand('joke')
+        }
+        cy.contains('You\'ve heard all my jokes! Type \'joke\' again to start over.')
+          .should('be.visible')
+      })
+
+      it('should reset quotes when all have been shown', () => {
+        for (let i = 0; i <= techQuotes.length - 1; i++) {
+          cy.typeCommand('quote')
+        }
+        cy.contains('You\'ve seen all the quotes! Type \'quote\' again to start over.')
+          .should('be.visible')
+      })
     })
   })
 
