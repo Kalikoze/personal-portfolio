@@ -9,7 +9,7 @@ export default function Projects() {
     <Section
       id="projects"
       title="Featured Projects"
-      description="Explore a selection of web applications I've built, showcasing my innovative solutions and technical excellence."
+      description="Explore a selection of client web applications I've built and deployed. Click any project to see it live and experience my innovative solutions firsthand."
       dataCy="projects-section"
       className="justify-center"
     >

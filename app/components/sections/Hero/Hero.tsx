@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-12 lg:gap-20 items-center">
         <article className="space-y-8">
           <header className="space-y-6">
-            <motion.p 
+            <motion.p
               data-cy="greeting"
               className="text-accent font-medium tracking-widest uppercase text-sm"
               initial={{ opacity: 0, y: 20 }}
@@ -35,8 +35,8 @@ export default function Hero() {
             >
               Hi there, I&apos;m
             </motion.p>
-            
-            <motion.h1 
+
+            <motion.h1
               id="hero-heading"
               data-cy="name"
               className="font-display text-6xl lg:text-8xl font-bold"
@@ -48,37 +48,37 @@ export default function Hero() {
                 Travis Rollins
               </span>
             </motion.h1>
-            
-            <motion.h2 
+
+            <motion.h2
               data-cy="title"
               className="text-2xl lg:text-4xl text-light/90 font-display leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Lead Software Engineer
+              Senior Software Engineer
             </motion.h2>
           </header>
 
-          <motion.p 
+          <motion.p
             data-cy="hero-description"
             className="max-w-xl text-light/70 text-lg lg:text-xl leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            Specializing in modern web development with Next.js, React, and TypeScript. 
-            Leading engineering initiatives to build high-performance, accessible solutions 
-            that drive business value.
+            From complex ideas to elegant web solutions, I craft lightning-fast, 
+            accessible applications that users love and businesses rely on. As a former 
+            musician, I bring a unique harmony to every line of code.
           </motion.p>
-          
-          <ul 
+
+          <ul
             data-cy="tech-stack"
             className="flex flex-wrap gap-3 mt-8"
             aria-label="Technical skills"
           >
             {['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Prisma', 'CircleCI'].map((tech, index) => (
-              <motion.li 
+              <motion.li
                 key={tech}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -93,7 +93,7 @@ export default function Hero() {
             ))}
           </ul>
 
-          <motion.nav 
+          <motion.nav
             className="flex gap-4 mt-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

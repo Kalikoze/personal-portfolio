@@ -46,7 +46,7 @@ export const commands = {
         <li>Visiting zoos and wildlife sanctuaries - I&apos;m passionate about animals!</li>
         <li>Going whale watching and enjoying beach activities when possible</li>
         <li>Playing classic RPGs (especially 16-bit era games like Final Fantasy)</li>
-        <li>Enjoying casual sports like bowling, billiards/pool, mini golf, and Top Golf</li>
+        <li>Enjoying casual sports like bowling, billiards/pool, miniature golf, and Top Golf</li>
         <li>Spending quality time with my fiancee and our pets (1 cat and 2 dogs)</li>
       </ul>
       <p className="text-light/50 mt-2">Pro tip: Try typing &apos;secret&apos; for a surprise...</p>

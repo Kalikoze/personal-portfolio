@@ -394,7 +394,7 @@ describe('Home Page', () => {
           'Visiting zoos and wildlife sanctuaries - I\'m passionate about animals!',
           'Going whale watching and enjoying beach activities when possible',
           'Playing classic RPGs (especially 16-bit era games like Final Fantasy)',
-          'Enjoying casual sports like bowling, billiards/pool, mini golf, and Top Golf',
+          'Enjoying casual sports like bowling, billiards/pool, miniature golf, and Top Golf',
           'Spending quality time with my fiancee and our pets (1 cat and 2 dogs)'
         ]
 
