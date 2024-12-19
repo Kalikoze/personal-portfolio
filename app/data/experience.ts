@@ -8,7 +8,7 @@ export type Experience = {
 
 export const experiences: readonly Experience[] = [
   {
-    title: 'Lead Software Developer',
+    title: 'Senior Software Engineer',
     company: 'Mind & Metrics Branding',
     location: 'Blair, NE',
     date: 'June 2024 - Present',

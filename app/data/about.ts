@@ -6,14 +6,14 @@ export const currentFocusItems = [
 ] as const;
 
 export const quickFactsItems = [
-  'Reduced client development costs by over 75%',
+  'Reduced client development costs by over 10%',
   'Led 100+ technical projects as instructor/developer',
-  'Built 5+ full-scale websites in past 6 months',
+  'Built 5+ full-scale websites in the past 6 months',
   'Mentored 1000+ developers into tech careers'
 ] as const;
 
 export const aboutParagraphs = [
-  `Currently leading engineering initiatives at Mind & Metrics Branding, I've architected 
+  `As a Senior Software Engineer at Mind & Metrics Branding, I've architected 
    and built multiple full-scale websites from the ground up. My focus has been on creating 
    scalable, high-performance solutions that significantly reduce client costs while maintaining 
    exceptional quality.`,

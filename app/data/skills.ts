@@ -45,7 +45,7 @@ export const skillCategories = [
       'NextAuth.js',
       'Stripe',
       'Docker',
-      'TensorFlow.js',
+      'TensorFlow',
       'GraphQL',
     ],
   },

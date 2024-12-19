@@ -32,11 +32,11 @@ describe('Home Page', () => {
 
       cy.get('[data-cy="title"]')
         .should('be.visible')
-        .and('contain.text', 'Lead Software Engineer')
+        .and('contain.text', 'Senior Software Engineer')
 
       cy.get('[data-cy="hero-description"]')
         .should('be.visible')
-        .and('contain.text', 'Specializing in modern web development')
+        .and('contain.text', 'From complex ideas to elegant web solutions, I craft lightning-fast, accessible applications that users love and businesses rely on. As a former musician, I bring a unique harmony to every line of code.')
 
       cy.get('[data-cy="tech-stack"]')
         .should('be.visible')
@@ -143,6 +143,7 @@ describe('Home Page', () => {
         const categoryId = category.title.toLowerCase().replace(/\s+/g, '-')
 
         cy.get(`[data-cy="skill-category-${categoryId}"]`)
+          .scrollIntoView()
           .should('be.visible')
           .within(() => {
             cy.get('[data-cy="category-title"]')
@@ -192,19 +193,24 @@ describe('Home Page', () => {
         .within(() => {
           cy.contains('h2', 'Featured Projects')
             .should('be.visible')
-          cy.contains('p', 'Explore a selection of web applications')
+          cy.contains('p', 'Explore a selection of client web applications I\'ve built and deployed. Click any project to see it live and experience my innovative solutions firsthand.')
             .should('be.visible')
         })
     })
 
     it('should display all featured projects correctly', () => {
       cy.get('@projectsData').then((data: any) => {
-        const featuredProjects = data.projects.filter((project: Project) => project.featured)
+        const { projects } = data
 
         cy.get('[data-cy="project-card"]')
-          .should('have.length', featuredProjects.length)
+          .should('have.length', projects.length)
           .each(($card, index) => {
-            const project: Project = featuredProjects[index]
+            const project: Project = projects[index]
+
+            cy.wrap($card)
+              .should('have.attr', 'href', project.projectUrl)
+              .and('have.attr', 'target', '_blank')
+              .and('have.attr', 'rel', 'noopener noreferrer')
 
             cy.wrap($card)
               .find('[data-cy="project-title"]')
@@ -223,20 +229,6 @@ describe('Home Page', () => {
               })
 
             cy.wrap($card)
-              .find('[data-cy="project-url"]')
-              .should('have.attr', 'href', project.projectUrl)
-              .and('have.attr', 'target', '_blank')
-              .and('have.attr', 'rel', 'noopener noreferrer')
-
-            if (project.githubUrl) {
-              cy.wrap($card)
-                .find('[data-cy="github-url"]')
-                .should('have.attr', 'href', project.githubUrl)
-                .and('have.attr', 'target', '_blank')
-                .and('have.attr', 'rel', 'noopener noreferrer')
-            }
-
-            cy.wrap($card)
               .find('[data-cy="desktop-preview"] img')
               .should('have.attr', 'src')
               .and('include', project.desktopImage.split('/').pop()?.split('.')[0] ?? '')
@@ -246,25 +238,6 @@ describe('Home Page', () => {
               .should('have.attr', 'src')
               .and('include', project.mobileImage.split('/').pop()?.split('.')[0] ?? '')
           })
-      })
-    })
-
-    it('should only display featured projects', () => {
-      cy.get('@projectsData').then((data: any) => {
-        const featuredProjects = data.projects.filter((project: Project) => project.featured)
-        const nonFeaturedProjects = data.projects.filter((project: Project) => !project.featured)
-
-        // Verify featured projects are shown
-        featuredProjects.forEach((project: Project) => {
-          cy.contains('[data-cy="project-title"]', project.title)
-            .should('exist')
-        })
-
-        // Verify non-featured projects are not shown
-        nonFeaturedProjects.forEach((project: Project) => {
-          cy.contains('[data-cy="project-title"]', project.title)
-            .should('not.exist')
-        })
       })
     })
   })
@@ -394,7 +367,7 @@ describe('Home Page', () => {
           'Visiting zoos and wildlife sanctuaries - I\'m passionate about animals!',
           'Going whale watching and enjoying beach activities when possible',
           'Playing classic RPGs (especially 16-bit era games like Final Fantasy)',
-          'Enjoying casual sports like bowling, billiards/pool, mini golf, and Top Golf',
+          'Enjoying casual sports like bowling, billiards/pool, miniature golf, and Top Golf',
           'Spending quality time with my fiancee and our pets (1 cat and 2 dogs)'
         ]
 
