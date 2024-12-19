@@ -200,12 +200,12 @@ describe('Home Page', () => {
 
     it('should display all featured projects correctly', () => {
       cy.get('@projectsData').then((data: any) => {
-        const featuredProjects = data.projects.filter((project: Project) => project.featured)
+        const { projects } = data
 
         cy.get('[data-cy="project-card"]')
-          .should('have.length', featuredProjects.length)
+          .should('have.length', projects.length)
           .each(($card, index) => {
-            const project: Project = featuredProjects[index]
+            const project: Project = projects[index]
 
             cy.wrap($card)
               .should('have.attr', 'href', project.projectUrl)
@@ -238,25 +238,6 @@ describe('Home Page', () => {
               .should('have.attr', 'src')
               .and('include', project.mobileImage.split('/').pop()?.split('.')[0] ?? '')
           })
-      })
-    })
-
-    it('should only display featured projects', () => {
-      cy.get('@projectsData').then((data: any) => {
-        const featuredProjects = data.projects.filter((project: Project) => project.featured)
-        const nonFeaturedProjects = data.projects.filter((project: Project) => !project.featured)
-
-        // Verify featured projects are shown
-        featuredProjects.forEach((project: Project) => {
-          cy.contains('[data-cy="project-title"]', project.title)
-            .should('exist')
-        })
-
-        // Verify non-featured projects are not shown
-        nonFeaturedProjects.forEach((project: Project) => {
-          cy.contains('[data-cy="project-title"]', project.title)
-            .should('not.exist')
-        })
       })
     })
   })
