@@ -32,11 +32,11 @@ describe('Home Page', () => {
 
       cy.get('[data-cy="title"]')
         .should('be.visible')
-        .and('contain.text', 'Lead Software Engineer')
+        .and('contain.text', 'Senior Software Engineer')
 
       cy.get('[data-cy="hero-description"]')
         .should('be.visible')
-        .and('contain.text', 'Specializing in modern web development')
+        .and('contain.text', 'From complex ideas to elegant web solutions, I craft lightning-fast, accessible applications that users love and businesses rely on. As a former musician, I bring a unique harmony to every line of code.')
 
       cy.get('[data-cy="tech-stack"]')
         .should('be.visible')
@@ -143,6 +143,7 @@ describe('Home Page', () => {
         const categoryId = category.title.toLowerCase().replace(/\s+/g, '-')
 
         cy.get(`[data-cy="skill-category-${categoryId}"]`)
+          .scrollIntoView()
           .should('be.visible')
           .within(() => {
             cy.get('[data-cy="category-title"]')
@@ -192,7 +193,7 @@ describe('Home Page', () => {
         .within(() => {
           cy.contains('h2', 'Featured Projects')
             .should('be.visible')
-          cy.contains('p', 'Explore a selection of web applications')
+          cy.contains('p', 'Explore a selection of client web applications I\'ve built and deployed. Click any project to see it live and experience my innovative solutions firsthand.')
             .should('be.visible')
         })
     })
@@ -205,6 +206,11 @@ describe('Home Page', () => {
           .should('have.length', featuredProjects.length)
           .each(($card, index) => {
             const project: Project = featuredProjects[index]
+
+            cy.wrap($card)
+              .should('have.attr', 'href', project.projectUrl)
+              .and('have.attr', 'target', '_blank')
+              .and('have.attr', 'rel', 'noopener noreferrer')
 
             cy.wrap($card)
               .find('[data-cy="project-title"]')
@@ -221,20 +227,6 @@ describe('Home Page', () => {
                 cy.wrap($tech)
                   .should('contain.text', project.technologies[techIndex])
               })
-
-            cy.wrap($card)
-              .find('[data-cy="project-url"]')
-              .should('have.attr', 'href', project.projectUrl)
-              .and('have.attr', 'target', '_blank')
-              .and('have.attr', 'rel', 'noopener noreferrer')
-
-            if (project.githubUrl) {
-              cy.wrap($card)
-                .find('[data-cy="github-url"]')
-                .should('have.attr', 'href', project.githubUrl)
-                .and('have.attr', 'target', '_blank')
-                .and('have.attr', 'rel', 'noopener noreferrer')
-            }
 
             cy.wrap($card)
               .find('[data-cy="desktop-preview"] img')
