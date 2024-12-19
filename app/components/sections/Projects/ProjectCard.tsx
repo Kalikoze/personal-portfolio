@@ -9,12 +9,14 @@ export default function ProjectCard({
   desktopImage,
   mobileImage,
   projectUrl,
-  githubUrl
 }: Project) {
   return (
-    <motion.article 
+    <motion.a 
+      href={projectUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       data-cy="project-card"
-      className="group bg-light/5 rounded-lg shadow-lg backdrop-blur-sm overflow-hidden border border-transparent hover:border-primary/50 transition-[border-color] duration-300 md:flex"
+      className="group bg-light/5 rounded-lg shadow-lg backdrop-blur-sm overflow-hidden border border-transparent hover:border-primary/50 transition-[border-color] duration-300 md:flex cursor-pointer"
       whileHover={{ y: -5 }}
       transition={{ duration: 0.2 }}
     >
@@ -83,42 +85,7 @@ export default function ProjectCard({
             </motion.li>
           ))}
         </ul>
-        
-        <nav 
-          data-cy="project-links" 
-          aria-label={`Links for ${title} project`}
-          className="flex gap-6 pt-4"
-        >
-          <motion.a 
-            data-cy="project-url"
-            href={projectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-accent/60 hover:text-accent transition-colors"
-            whileHover={{ x: 5 }}
-          >
-            <span className="font-medium">View Project</span>
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </motion.a>
-          {githubUrl && (
-            <motion.a 
-              data-cy="github-url"
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-light/60 hover:text-light transition-colors"
-              whileHover={{ x: 5 }}
-            >
-              <span className="font-medium">GitHub</span>
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </motion.a>
-          )}
-        </nav>
       </section>
-    </motion.article>
+    </motion.a>
   )
 } 

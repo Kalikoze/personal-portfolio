@@ -5,8 +5,6 @@ import ProjectCard from "./ProjectCard"
 import Section from "@/app/components/layout/Section"
 
 export default function Projects() {
-  const featuredProjects = projects.filter(project => project.featured)
-
   return (
     <Section
       id="projects"
@@ -16,7 +14,7 @@ export default function Projects() {
       className="justify-center"
     >
       <div className="flex flex-col gap-16 w-full">
-        {featuredProjects.map((project) => (
+        {projects.map((project) => (
           <ProjectCard
             key={project.title}
             {...project}
