@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Travis Rollins Portfolio
 
-## Getting Started
+A modern, performant, and accessible portfolio website built with Next.js, showcasing my professional experience, technical skills, and featured projects.
 
-First, run the development server:
+## Table of Contents
 
+1. [Overview](#overview)
+2. [Installation](#installation)
+3. [Running the Application](#running-the-application)
+4. [Linting and Type Checking](#linting-and-type-checking)
+5. [Testing](#testing)
+6. [Technologies Used](#technologies-used)
+7. [Project Structure](#project-structure)
+8. [Code Style and Conventions](#code-style-and-conventions)
+9. [Performance Optimization](#performance-optimization)
+10. [Accessibility](#accessibility)
+11. [Contributors](#contributors)
+12. [Additional Resources](#additional-resources)
+
+## Overview
+
+This portfolio website showcases my work as a Senior Software Engineer, featuring an interactive terminal, animated UI components, and comprehensive project displays. The site demonstrates modern web development practices with a focus on performance, accessibility, and user experience.
+
+## Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Kalikoze/personal-portfolio.git
+cd personal-portfolio
+ ```
+
+2. Install dependencies:
+```bash
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running the Application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+## Linting and Type Checking
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project uses ESLint for linting and TypeScript for type checking:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Linting:
+```bash
+npm run lint
+```
 
-## Deploy on Vercel
+- Type Checking:
+```bash
+npm run type-check
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Testing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project uses Cypress for end-to-end testing and accessibility checks:
+
+- Run tests in headless mode:
+```bash
+npm run test
+```
+
+- Run tests in interactive mode:
+```bash
+npm run test:ui
+```
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) (v14.2.17) - React framework
+- [React](https://reactjs.org/) (v18) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Cypress](https://www.cypress.io/) - Testing
+- [Sharp](https://sharp.pixelplumbing.com/) - Image optimization
+- [React Particles](https://particles.js.org/) - Background effects
+- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
+
+## Code Style and Conventions
+
+- Follows Next.js best practices and conventions
+- Uses TypeScript for type safety
+- Implements functional components with hooks
+- Employs Tailwind CSS for styling
+- Maintains consistent file and component structure
+- Includes comprehensive testing with Cypress
+
+## Performance Optimization
+
+- Server-side rendering with Next.js
+- Image optimization using Sharp
+- Font optimization with next/font
+- Code splitting and lazy loading
+- Tailwind CSS purging for minimal CSS
+
+## Accessibility
+
+The website maintains high accessibility standards:
+
+- Semantic HTML structure
+- ARIA labels and roles
+- Keyboard navigation support
+- Color contrast compliance
+- Regular accessibility testing with Cypress axe
+- WCAG 2.1 compliance
+
+## Contributors
+
+| Travis Rollins |
+|:----------:|
+| <img src="https://avatars.githubusercontent.com/u/25714149?v=4" alt="Travis Rollins" width="125" height="auto" /> |
+| [![LinkedIn](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/travisrollins/) [![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/Kalikoze) |
+
+## Additional Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://reactjs.org/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Framer Motion Documentation](https://www.framer.com/motion/)
+- [Cypress Documentation](https://docs.cypress.io/)
