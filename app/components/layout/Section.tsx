@@ -23,7 +23,7 @@ export default function Section({
 }: SectionProps) {
   return (
     <section
-      className={`relative min-h-screen flex items-center ${className} py-16`}
+      className={`relative min-h-screen flex items-center ${className} py-16 px-4`}
       aria-labelledby={id}
       data-cy={dataCy}
     >

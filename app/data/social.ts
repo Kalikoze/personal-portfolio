@@ -1,4 +1,4 @@
-import { FiGithub, FiLinkedin } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 
 export const socialLinks = [
   {
@@ -10,5 +10,10 @@ export const socialLinks = [
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/travisrollins/',
     icon: FiLinkedin,
+  },
+  {
+    name: 'Contact Me',
+    url: 'mailto:kalikoze@gmail.com',
+    icon: FiMail,
   },
 ] as const 
