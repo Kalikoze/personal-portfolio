@@ -46,7 +46,7 @@ export const skillCategories = [
       'Stripe',
       'Docker',
       'TensorFlow',
-      'GraphQL',
+      'Supabase',
     ],
   },
 ] as const
