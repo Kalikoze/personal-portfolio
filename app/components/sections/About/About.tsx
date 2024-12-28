@@ -35,7 +35,7 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="space-y-6"
+          className="flex flex-col gap-6 h-full"
           data-cy="about-sidebar"
           aria-label="Additional information"
         >

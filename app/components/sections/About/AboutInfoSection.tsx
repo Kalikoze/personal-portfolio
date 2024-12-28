@@ -6,12 +6,12 @@ type InfoSectionProps = {
 
 export default function AboutInfoSection({ id, title, items }: InfoSectionProps) {
   return (
-    <section 
-      data-cy={id} 
-      className="bg-light/5 rounded-lg p-6 space-y-4"
+    <section
+      data-cy={id}
+      className="bg-light/5 rounded-lg p-6 space-y-4 h-full"
       aria-labelledby={`${id}-heading`}
     >
-      <h3 
+      <h3
         id={`${id}-heading`}
         className="text-xl font-display font-semibold text-accent"
       >
