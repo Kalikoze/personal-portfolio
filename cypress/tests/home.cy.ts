@@ -53,15 +53,16 @@ describe('Home Page', () => {
     })
 
     it('should display and link to social profiles correctly', () => {
-      cy.get('nav[aria-label="Social links"]')
+      cy.get('nav[aria-label="Contact links"]')
         .should('be.visible')
         .find('a')
         .each(($el, index) => {
+          const link = socialLinks[index]
           cy.wrap($el)
-            .should('have.attr', 'href', socialLinks[index].url)
+            .should('have.attr', 'href', link.url)
             .and('have.attr', 'target', '_blank')
             .and('have.attr', 'rel', 'noopener noreferrer')
-            .and('have.attr', 'aria-label', `${socialLinks[index].name} Profile`)
+            .and('have.attr', 'aria-label', `${link.name === 'Contact Me' ? 'Send email' : `${link.name} Profile`}`)
         })
     })
   })
