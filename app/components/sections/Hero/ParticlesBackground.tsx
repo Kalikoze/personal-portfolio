@@ -70,7 +70,7 @@ export default function ParticlesBackground() {
           },
           particles: {
             color: {
-              value: '#2DD4BF', // Using your primary color
+              value: '#2DD4BF',
             },
             links: {
               color: '#2DD4BF',

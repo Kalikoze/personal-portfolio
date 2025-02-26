@@ -8,9 +8,13 @@ export const skillCategories = [
     skills: [
       'Next.js',
       'React',
+      'Redux',
       'TypeScript',
       'Tailwind CSS',
+      'Framer Motion',
+      'PostgreSQL',
       'Prisma',
+      'Supabase',
     ],
   },
   {
@@ -19,8 +23,11 @@ export const skillCategories = [
     description: 'Tools and platforms I leverage for efficient development and deployment',
     skills: [
       'Git/GitHub',
-      'CircleCI',
       'Vercel',
+      'CircleCI',
+      'Cloudinary',
+      'SendGrid',
+      'NextAuth.js',
       'Google Analytics',
       'SEMRush',
     ],
@@ -31,10 +38,10 @@ export const skillCategories = [
     description: 'Technologies I use to ensure code quality and accessibility',
     skills: [
       'Cypress',
+      'ESLint',
+      'Mocha/Chai',
       'LightHouse',
       'aXe',
-      'Mocha/Chai',
-      'ESLint',
     ],
   },
   {
@@ -42,11 +49,12 @@ export const skillCategories = [
     icon: FiBook,
     description: 'Technologies I\'m actively learning and experimenting with',
     skills: [
-      'NextAuth.js',
-      'Stripe',
-      'Docker',
       'TensorFlow',
-      'Supabase',
+      'Stripe',
+      'Resend',
+      'Sanity',
+      'tRPC',
+      'Docker',
     ],
   },
 ] as const

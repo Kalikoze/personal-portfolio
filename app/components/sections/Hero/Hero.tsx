@@ -74,7 +74,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Senior Software Engineer
+              Software Engineer
             </motion.h2>
           </header>
 
@@ -95,7 +95,7 @@ export default function Hero() {
             className="flex flex-wrap gap-3"
             aria-label="Technical skills"
           >
-            {['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Prisma', 'CircleCI'].map((tech, index) => (
+            {['Next.js', 'React', 'Redux', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL', 'Prisma', 'Supabase'].map((tech, index) => (
               <motion.li
                 key={tech}
                 initial={{ opacity: 0, scale: 0.9 }}

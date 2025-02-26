@@ -39,9 +39,10 @@ export default function Skills() {
           Continuous Learning Approach
         </h3>
         <p className="text-light/60 mb-4">
-          As the sole developer at a B2B digital solutions agency, I constantly adapt to diverse client needs
-          by exploring and implementing new technologies. Each project presents unique challenges,
-          from e-commerce solutions to custom CMS integrations, driving continuous learning and innovation.
+          As a former sole developer at a B2B digital solutions agency, I developed a habit of
+          adapting to diverse client needs by exploring and implementing new technologies.
+          Each project presented unique challenges, from e-commerce solutions to custom CMS integrations,
+          driving my passion for continuous learning and innovation.
         </p>
         <ul className="flex flex-wrap gap-4" role="list">
           {learningApproachItems.map(({ text, color }) => (
