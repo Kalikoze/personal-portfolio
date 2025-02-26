@@ -9,11 +9,13 @@ describe('Home Page', () => {
   const techStack = [
     'Next.js',
     'React',
+    'Redux',
     'TypeScript',
     'Tailwind CSS',
     'Framer Motion',
+    'PostgreSQL',
     'Prisma',
-    'CircleCI'
+    'Supabase',
   ] as const;
 
   beforeEach(() => {
@@ -32,7 +34,7 @@ describe('Home Page', () => {
 
       cy.get('[data-cy="title"]')
         .should('be.visible')
-        .and('contain.text', 'Senior Software Engineer')
+        .and('contain.text', 'Software Engineer')
 
       cy.get('[data-cy="hero-description"]')
         .should('be.visible')
@@ -171,7 +173,7 @@ describe('Home Page', () => {
           cy.contains('h3', 'Continuous Learning Approach')
             .should('be.visible')
 
-          cy.contains('p', 'As the sole developer at a B2B digital solutions agency, I constantly adapt to diverse client needs by exploring and implementing new technologies. Each project presents unique challenges, from e-commerce solutions to custom CMS integrations, driving continuous learning and innovation.')
+          cy.contains('p', 'As a former sole developer at a B2B digital solutions agency, I developed a habit of adapting to diverse client needs by exploring and implementing new technologies. Each project presented unique challenges, from e-commerce solutions to custom CMS integrations, driving my passion for continuous learning and innovation.')
             .should('be.visible')
 
           learningApproachItems.forEach(({ text }) => {
