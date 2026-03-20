@@ -10,8 +10,7 @@ export default function About() {
     <Section
       id="about"
       title="About Me"
-      description="With over 7 years in software development, I bring a unique blend of technical expertise,
-                  teaching experience, and a passion for creating inclusive tech spaces."
+      description="With over 8 years in software development, including 6 years as an instructor, I bring a unique blend of technical expertise, teaching experience, and a passion for building inclusive and high-quality digital experiences."
       dataCy="about-section"
     >
       <div className="grid md:grid-cols-2 gap-12 items-start">
