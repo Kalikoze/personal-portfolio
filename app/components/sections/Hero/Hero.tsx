@@ -74,7 +74,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Software Engineer
+              Senior Software Engineer
             </motion.h2>
           </header>
 
@@ -85,9 +85,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            From complex ideas to elegant web solutions, I craft lightning-fast,
-            accessible applications that users love and businesses rely on. As a former
-            musician, I bring a unique harmony to every line of code.
+            From complex ideas to elegant web solutions, I build accessible,
+            high-performance applications that scale. As a former musician, I bring
+            a unique harmony to every line of code.
           </motion.p>
 
           <ul
@@ -95,7 +95,7 @@ export default function Hero() {
             className="flex flex-wrap gap-3"
             aria-label="Technical skills"
           >
-            {['Next.js', 'React', 'Redux', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'PostgreSQL', 'Prisma', 'Supabase'].map((tech, index) => (
+            {['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL', 'Supabase', 'Turborepo', 'Storybook', 'Vitest'].map((tech, index) => (
               <motion.li
                 key={tech}
                 initial={{ opacity: 0, scale: 0.9 }}
