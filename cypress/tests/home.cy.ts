@@ -9,13 +9,14 @@ describe('Home Page', () => {
   const techStack = [
     'Next.js',
     'React',
-    'Redux',
     'TypeScript',
     'Tailwind CSS',
-    'Framer Motion',
-    'PostgreSQL',
     'Prisma',
+    'PostgreSQL',
     'Supabase',
+    'Framer Motion',
+    'Storybook',
+    'Vitest',
   ] as const;
 
   beforeEach(() => {
@@ -38,7 +39,7 @@ describe('Home Page', () => {
 
       cy.get('[data-cy="hero-description"]')
         .should('be.visible')
-        .and('contain.text', 'From complex ideas to elegant web solutions, I craft lightning-fast, accessible applications that users love and businesses rely on. As a former musician, I bring a unique harmony to every line of code.')
+        .and('contain.text', 'From complex ideas to elegant web solutions, I build accessible, high-performance applications that scale. As a former musician, I bring a unique harmony to every line of code.')
 
       cy.get('[data-cy="tech-stack"]')
         .should('be.visible')
@@ -83,7 +84,7 @@ describe('Home Page', () => {
 
       cy.get('[data-cy="about-description"]')
         .should('be.visible')
-        .and('contain.text', 'With over 7 years in software development, I bring a unique blend of technical expertise, teaching experience, and a passion for creating inclusive tech spaces.')
+        .and('contain.text', 'With over 8 years in software development, including 6 years as an instructor, I bring a unique blend of technical expertise, teaching experience, and a passion for building inclusive and high-quality digital experiences.')
 
       cy.get('[data-cy="about-main"] p').each(($p, index) => {
         const text = $p.text().replace(/\s+/g, ' ').trim()
@@ -128,8 +129,8 @@ describe('Home Page', () => {
 
     it('should display all skill statistics correctly', () => {
       const stats = [
-        { value: '7+', label: 'Years of Experience' },
-        { value: '20+', label: 'Technologies Mastered' },
+        { value: '8+', label: 'Years of Experience' },
+        { value: '30+', label: 'Technologies Mastered' },
         { value: '50+', label: 'Web Applications Built' }
       ]
 
@@ -173,7 +174,7 @@ describe('Home Page', () => {
           cy.contains('h3', 'Continuous Learning Approach')
             .should('be.visible')
 
-          cy.contains('p', 'As a former sole developer at a B2B digital solutions agency, I developed a habit of adapting to diverse client needs by exploring and implementing new technologies. Each project presented unique challenges, from e-commerce solutions to custom CMS integrations, driving my passion for continuous learning and innovation.')
+          cy.contains('p', 'From leading curriculum at a coding school to architecting systems at scale,')
             .should('be.visible')
 
           learningApproachItems.forEach(({ text }) => {

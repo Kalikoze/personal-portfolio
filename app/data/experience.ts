@@ -8,10 +8,24 @@ export type Experience = {
 
 export const experiences: readonly Experience[] = [
   {
+    title: 'Senior Web Developer',
+    company: 'Milan Laser Hair Removal',
+    location: 'Omaha, NE',
+    date: 'April 2025 - Present',
+    details: [
+      'Architected a React/TypeScript component library of 35+ reusable sections integrated with Builder.io across multiple marketing sites.',
+      'Contributed 528 commits while maintaining full test coverage for carousels, quizzes, countdown timers, and other complex interactions.',
+      'Documented every component in Storybook with built-in accessibility patterns including ARIA live regions and semantic heading hierarchy.',
+      'Built a full-stack influencer management system in ~5 weeks with dual-layer auth, Swagger docs, and automated Netlify webhook triggers.',
+      'Consolidated three sites into a Turborepo monorepo with twelve scoped packages replacing two legacy Gatsby codebases.',
+      'Led AI adoption across the team, establishing workflows for PRs, code review, and JIRA ticketing using sub-agents and MCP servers.',
+    ],
+  },
+  {
     title: 'Web Developer & Designer',
     company: 'Mind & Metrics Branding',
     location: 'Blair, NE',
-    date: 'June 2024 - Present',
+    date: 'June 2024 - January 2025',
     details: [
       'Built and modernized five full-scale websites for clients in industrial services.',
       'Achieved a drastic reduction in client costs, providing custom, high-quality solutions.',
