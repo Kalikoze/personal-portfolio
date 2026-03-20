@@ -2,8 +2,6 @@ import PSCDesktop from '@/public/assets/psc-desktop.png'
 import PSCMobile from '@/public/assets/psc-mobile.png'
 import PrecisionDesktop from '@/public/assets/precision-desktop.png'
 import PrecisionMobile from '@/public/assets/precision-mobile.png'
-import MindMetricsDesktop from '@/public/assets/mindmetrics-desktop.png'
-import MindMetricsMobile from '@/public/assets/mindmetrics-mobile.png'
 
 export type Project = {
   title: string
@@ -52,24 +50,5 @@ export const projects: Project[] = [
     desktopImage: PrecisionDesktop.src,
     mobileImage: PrecisionMobile.src,
     projectUrl: "https://www.precisionsurveyingandconsulting.com/",
-  },
-  {
-    title: "Mind & Metrics Branding",
-    description: "A professional branding and marketing agency website featuring comprehensive B2B service offerings. A standout feature includes an interactive cost estimation quiz that provides instant pricing based on service selections and project scope, streamlining the consultation process. Built with modern web technologies to deliver file upload capabilities and interactive case studies while maintaining high performance and accessibility standards.",
-    technologies: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "React Hook Form",
-      "React Toastify",
-      "Sharp",
-      "Cypress",
-      "SendGrid",
-    ],
-    desktopImage: MindMetricsDesktop.src,
-    mobileImage: MindMetricsMobile.src,
-    projectUrl: "https://www.mindandmetricsbranding.com/",
   }
 ] 

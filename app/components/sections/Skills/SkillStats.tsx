@@ -23,9 +23,9 @@ export default function SkillStats() {
       transition={{ duration: 0.5, delay: 0.2 }}
       className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
     >
-      <Stat value="7+" label="Years of Experience" />
-      <Stat value="20+" label="Technologies Mastered" />
-      <Stat value="50+" label="Web Applications Built" />
+      <Stat value="8+" label="Years of Experience" />
+      <Stat value="30+" label="Technologies Mastered" />
+      <Stat value="60+" label="Web Applications Built" />
     </motion.div>
   )
 } 

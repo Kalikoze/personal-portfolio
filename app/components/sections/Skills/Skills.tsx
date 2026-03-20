@@ -39,10 +39,12 @@ export default function Skills() {
           Continuous Learning Approach
         </h3>
         <p className="text-light/60 mb-4">
-          As a former sole developer at a B2B digital solutions agency, I developed a habit of
-          adapting to diverse client needs by exploring and implementing new technologies.
-          Each project presented unique challenges, from e-commerce solutions to custom CMS integrations,
-          driving my passion for continuous learning and innovation.
+          From leading curriculum at a coding school to architecting systems at scale,
+          my career has always been driven by a genuine curiosity for what is possible.
+          Each project brings new constraints and opportunities, whether it is a monorepo
+          consolidation, a component library built for multiple teams, or a passion project
+          that pushes into territory I have never explored before. That drive to keep learning
+          is not something I have to force. It is just how I work.
         </p>
         <ul className="flex flex-wrap gap-4" role="list">
           {learningApproachItems.map(({ text, color }) => (
