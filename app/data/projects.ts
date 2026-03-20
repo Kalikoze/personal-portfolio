@@ -2,8 +2,6 @@ import PSCDesktop from '@/public/assets/psc-desktop.png'
 import PSCMobile from '@/public/assets/psc-mobile.png'
 import PrecisionDesktop from '@/public/assets/precision-desktop.png'
 import PrecisionMobile from '@/public/assets/precision-mobile.png'
-import MindMetricsDesktop from '@/public/assets/mindmetrics-desktop.png'
-import MindMetricsMobile from '@/public/assets/mindmetrics-mobile.png'
 
 export type Project = {
   title: string
